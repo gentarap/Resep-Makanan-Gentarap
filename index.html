@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO: Judul halaman -->
+    <title>FoodieSpell - Eksplorasi Kuliner Dunia & Resep Internasional</title>
+    <!-- Meta SEO -->
+    <meta
+      name="description"
+      content="Nikmati perjalanan rasa dari berbagai belahan dunia. FoodieSpell menyajikan resep global dan rekomendasi makanan khas internasional."
+    />
+    <meta
+      name="keywords"
+      content="FoodieSpell, resep dunia, kuliner internasional, makanan global, resep masakan asing, makanan khas negara"
+    />
+    <meta name="author" content="FoodieSpell Team" />
+
+    <!-- Open Graph sosial media preview -->
+    <meta
+      property="og:title"
+      content="FoodieSpell - Eksplorasi Kuliner Dunia & Resep Internasional"
+    />
+    <meta
+      property="og:description"
+      content="Nikmati perjalanan rasa dari berbagai belahan dunia. FoodieSpell menyajikan resep global dan rekomendasi makanan khas internasional."
+    />
+    <meta
+      property="og:image"
+      content="https://www.foodiespell.com/images/thumbnail.jpg"
+    />
+    <meta property="og:url" content="https://www.foodiespell.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- Navigation -->
+      <nav>
+        <a href="" id="logo">FoodieSpell</a>
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#resep">Resep</a></li>
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>
+          Selamat Datang di <span class="brand-highlight">FoodieSpell</span>
+        </h1>
+        <p>
+          Nikmati perjalanan rasa dari berbagai belahan dunia. FoodieSpell
+          menyajikan resep global dan rekomendasi makanan khas internasional.
+        </p>
+        <h2>Cari Resep Favoritmu :</h2>
+        <form id="searchForm">
+          <input type="text" id="searchInput" placeholder="Cari resep..." />
+          <button type="submit" class="btn-search">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="recipe" id="resep">
+      <h2 class="title">Galeri Resep</h2>
+      <h3 class="sub-title">Cari berbagai jenis resep :</h3>
+    
+      <!-- Baris pertama -->
+      <div class="gallery-wrapper">
+        <button id="scrollLeft" class="scroll-btn">⟨</button>
+        <div class="scroll-wrapper">
+          <div class="recipe-scroll" id="recipeContainer"></div>
+        </div>
+        <button id="scrollRight" class="scroll-btn">⟩</button>
+      </div>
+    
+      <!-- Baris kedua -->
+      <div class="gallery-wrapper">
+        <button id="scrollLeft2" class="scroll-btn">⟨</button>
+        <div class="scroll-wrapper">
+          <div class="recipe-scroll" id="recipeContainer2"></div>
+        </div>
+        <button id="scrollRight2" class="scroll-btn">⟩</button>
+      </div>
+    
+      <!-- Template  -->
+      <template id="recipe-template">
+        <div class="card">
+          <img src="" alt="Recipe Image" class="card-image" />
+          <div class="card-body">
+            <h4 class="card-title"></h4>
+            <p class="card-info tags"></p>
+            <p class="card-info rating"></p>
+            <p class="card-info meal-type"></p>
+            <button class="btn-detailrecipes">Lihat Resep</button>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
