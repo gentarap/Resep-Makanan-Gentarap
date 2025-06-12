@@ -18,6 +18,7 @@ function fillCard(clone, recipe) {
   const tags = clone.querySelector(".tags");
   const rating = clone.querySelector(".rating");
   const mealType = clone.querySelector(".meal-type");
+  const btnDetail = clone.querySelector(".btn-detailrecipes");
 
   img.src = recipe.image;
   img.alt = recipe.name;
@@ -25,6 +26,10 @@ function fillCard(clone, recipe) {
   tags.textContent = `🏷️ ${recipe.tags.join(", ")}`;
   rating.textContent = `⭐ ${recipe.rating}/5 (${recipe.reviewCount} reviews)`;
   mealType.textContent = `🍽 ${recipe.mealType.join(", ")}`;
+
+  btnDetail.addEventListener("click", () => {
+    window.location.href = `html/detail-resep.html?id=${recipe.id}`;
+  });
 }
 
 function loadDefaultRecipes() {

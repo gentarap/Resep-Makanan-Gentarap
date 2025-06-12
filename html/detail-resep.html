@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Resep</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- Navigation -->
+      <nav>
+        <div class="nav-header">
+          <a href="#" id="logo">FoodieSpell</a>
+          <button id="hamburger">&#9776;</button>
+        </div>
+        <ul id="nav-links">
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#search-recipe">Cari Resep</a></li>
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Detail Resep -->
+    <section class="detail-resep">
+      <!-- Gambar dan Info -->
+      <div class="info-gambar">
+        <img id="recipeImage" src="" alt="Gambar Resep" />
+        <div class="info">
+          <h1 id="recipeName">Memuat...</h1>
+          <p><strong>Rating:</strong> <span id="rating"></span></p>
+          <p><strong>Review:</strong> <span id="reviews"></span> ulasan</p>
+          <p>
+            <strong>Tingkat Kesulitan:</strong> <span id="difficulty"></span>
+          </p>
+          <p><strong>Asal Masakan:</strong> <span id="cuisine"></span></p>
+        </div>
+      </div>
+      <!-- info resep -->
+      <div class="info-resep">
+        <div>
+          <span id="prepTime">--</span> Menit<br /><small>Persiapan</small>
+        </div>
+        <div><span id="cookTime">--</span> Menit<br /><small>Masak</small></div>
+        <div><span id="servings">--</span><br /><small>Porsi</small></div>
+        <div><span id="calories">--</span> kkal<br /><small>Kalori</small></div>
+      </div>
+      <div class="bahan-langkah">
+        <!-- Bahan -->
+        <div class="bahan">
+          <h3>Bahan-bahan:</h3>
+          <ul id="ingredients"></ul>
+        </div>
+        <!-- Langkah -->
+        <div class="langkah">
+          <h3>Langkah-langkah:</h3>
+          <ol id="instructions"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- JS -->
+    <script src="/js/detail-resep.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

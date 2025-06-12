@@ -350,6 +350,97 @@ nav {
   display: none;
 }
 
+/* Detail-resep */
+.detail-resep {
+  margin: 20px 50px;
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.info-gambar {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+.info-gambar img {
+  max-width: 900px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info h1 {
+  color: var(--primary-green);
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.info p {
+  margin: 3px 0;
+  line-height: 1.5;
+  color: var(--dark-brown);
+}
+
+.info-resep {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 20px;
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-resep div {
+  background: var(--accent-red-light);
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+.bahan-langkah {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.bahan,
+.langkah {
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.bahan h3 {
+  margin-top: 0;
+  color: var(--primary-green);
+}
+.langkah h3 {
+  margin-top: 0;
+  color: var(--primary-green);
+}
+
+ul,
+ol {
+  padding-left: 35px;
+}
+
 /* ===== Responsive for Tablets (768px and below) ===== */
 @media (max-width: 768px) {
   .hero {
@@ -455,13 +546,40 @@ nav {
     font-size: 18px;
     margin-left: 20px;
   }
+
+  /* detail resep */
+  .detail-resep {
+    margin: 10px 20px;
+    padding: 15px;
+  }
+
+  .info-gambar {
+    grid-template-columns: 1fr;
+  }
+
+  .info h1 {
+    font-size: 36px;
+  }
+
+  .info-resep {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .bahan-langkah {
+    grid-template-columns: 1fr;
+  }
+
+  .bahan,
+  .langkah {
+    padding: 0.8rem;
+  }
 }
 
 /* ===== Responsive for Mobile (480px and below) ===== */
 @media (max-width: 480px) {
   .hero {
     padding: 2rem 1rem;
-    background-image: url("/assets/img/background-mobile.jpg");
+    background-image: url("/assets/img/background.jpg");
     background-size: cover;
     background-position: center;
   }
@@ -567,5 +685,35 @@ nav {
   .recipe h3 {
     font-size: 16px;
     margin-left: 15px;
+  }
+  /* detail resep */
+  .detail-resep {
+    margin: 5px 10px;
+    padding: 10px;
+  }
+
+  .info h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .info p {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .info-resep {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .info-gambar img {
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+  ul,
+  ol {
+    padding-left: 20px;
   }
 }
