@@ -41,12 +41,18 @@ nav {
   background-color: var(--primary-green);
   color: var(--text-light);
   padding: 20px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 #logo {
@@ -56,7 +62,7 @@ nav {
   text-decoration: none;
 }
 
-nav ul {
+#nav-links {
   list-style: none;
   display: flex;
   gap: 20px;
@@ -64,7 +70,13 @@ nav ul {
   padding: 0;
 }
 
-nav ul li a {
+#nav-links.show {
+  display: flex;
+  opacity: 1;
+  max-height: 500px;
+}
+
+#nav-links li a {
   text-decoration: none;
   color: var(--white);
   padding: 10px 10px;
@@ -73,9 +85,19 @@ nav ul li a {
   opacity: 0.9;
 }
 
-nav ul li a:hover {
+#nav-links li a:hover {
   color: var(--accent-orange);
   transform: translateY(-2px);
+}
+
+#hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  margin-left: auto;
 }
 
 /* Hero Section */
@@ -249,8 +271,24 @@ nav ul li a:hover {
 
 .card-info {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--dark-brown);
   margin: 0.25rem 0;
+}
+
+.btn-detailrecipes {
+  display: inline-block;
+  background-color: var(--accent-red);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+.btn-detailrecipes:hover {
+  background-color: var(--accent-red-light);
 }
 
 /* Scroll buttons */
@@ -267,11 +305,16 @@ nav ul li a:hover {
   cursor: pointer;
   z-index: 2;
   transition: background-color 0.3s ease, opacity 0.3s ease;
-  opacity: 0.8;
+  opacity: 0.4;
 }
 
 .scroll-btn:hover {
-  background-color: rgba(212, 87, 74, 0.9); /* transparansi dari --accent-red-light */
+  background-color: rgba(
+    212,
+    87,
+    74,
+    0.9
+  ); /* transparansi dari --accent-red-light */
   opacity: 1;
 }
 
@@ -292,33 +335,19 @@ nav ul li a:hover {
   margin-right: 20px;
   margin-left: 0.5rem;
 }
-#scrollLeft, #scrollLeft2 {
+#scrollLeft,
+#scrollLeft2 {
   left: 0;
 }
 
-#scrollRight, #scrollRight2 {
+#scrollRight,
+#scrollRight2 {
   right: 0;
 }
 
 /* Optional: hide scrollbar */
 .scroll-wrapper::-webkit-scrollbar {
   display: none;
-}
-
-.btn-detailrecipes {
-  display: inline-block;
-  background-color: var(--accent-red);
-  color: var(--text-light);
-  padding: 0.5rem 1rem;
-  border-radius: 9px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-  margin-top: auto;
-}
-
-.btn-detailrecipes:hover {
-  background-color: var(--accent-red-light);
 }
 
 /* ===== Responsive for Tablets (768px and below) ===== */
@@ -353,15 +382,42 @@ nav ul li a:hover {
     font-size: 0.95rem;
   }
 
-  nav {
+  #nav-links {
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
+    background-color: var(--primary-green);
+    position: absolute;
+    top: 70px; /* sesuaikan dengan tinggi navbar */
+    left: 0;
+    margin-top: 0px;
+    gap: 0px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
   }
 
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
+  #nav-links.show {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    opacity: 1;
+    max-height: 500px;
+  }
+
+  #nav-links li {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  #nav-links li a {
+    display: block;
+    padding: 15px 0;
+    font-size: 18px;
+  }
+
+  #hamburger {
+    display: block;
   }
 
   .gallery-wrapper {
@@ -422,42 +478,52 @@ nav ul li a:hover {
     font-size: 1rem;
   }
 
-  #searchForm {
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 20px;
-  }
-
-  #searchInput {
-    width: 100%;
-    border-radius: 12px;
-    border-right: 2px solid var(--primary-green);
-  }
-
-  .btn-search {
-    width: 100%;
-    border-radius: 12px;
-    font-size: 1rem;
-  }
-
   nav {
     padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .nav-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   #logo {
     font-size: 24px;
   }
 
-  nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  #hamburger {
+    display: block;
+    margin-left: auto;
   }
 
-  nav ul li a {
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    top: 60px;
+    width: 100%;
+    margin-top: 0px;
+    gap: 0px;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  #nav-links.show {
+    padding-top: 10px;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #nav-links li a {
     padding: 8px;
     font-size: 0.95rem;
-    padding: 0 0.5rem;
   }
 
   .gallery-wrapper {

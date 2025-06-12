@@ -1,9 +1,17 @@
+// Hamburger Button
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
+
+// Get Recipe
 const recipeContainer = document.getElementById("recipeContainer");
 const recipeContainer2 = document.getElementById("recipeContainer2");
 const template = document.getElementById("recipe-template");
 const scrollWrapper = document.querySelectorAll(".scroll-wrapper");
 
-// ✅ Pindahkan ke luar agar global
 function fillCard(clone, recipe) {
   const img = clone.querySelector(".card-image");
   const title = clone.querySelector(".card-title");
@@ -15,7 +23,7 @@ function fillCard(clone, recipe) {
   img.alt = recipe.name;
   title.textContent = recipe.name;
   tags.textContent = `🏷️ ${recipe.tags.join(", ")}`;
-  rating.textContent = `⭐ ${recipe.rating}/5 📝 ${recipe.reviewCount} reviews`;
+  rating.textContent = `⭐ ${recipe.rating}/5 (${recipe.reviewCount} reviews)`;
   mealType.textContent = `🍽 ${recipe.mealType.join(", ")}`;
 }
 
@@ -57,6 +65,7 @@ function loadDefaultRecipes() {
   });
 }
 
+// Search Recipe
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 const scrollLeft2Btn = document.getElementById("scrollLeft2");
@@ -70,7 +79,7 @@ searchForm.addEventListener("submit", function (e) {
   fetch(`https://dummyjson.com/recipes/search?q=${encodeURIComponent(query)}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log("Hasil pencarian:", data); // ✅ DI SINI, bukan di luar
+      console.log("Hasil pencarian:", data);
 
       recipeContainer.innerHTML = "";
       recipeContainer2.innerHTML = "";

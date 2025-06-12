@@ -40,10 +40,13 @@
     <header>
       <!-- Navigation -->
       <nav>
-        <a href="" id="logo">FoodieSpell</a>
-        <ul>
+        <div class="nav-header">
+          <a href="#" id="logo">FoodieSpell</a>
+          <button id="hamburger">&#9776;</button>
+        </div>
+        <ul id="nav-links">
           <li><a href="#home">Beranda</a></li>
-          <li><a href="#resep">Resep</a></li>
+          <li><a href="#search-recipe">Cari Resep</a></li>
           <li><a href=""></a></li>
           <li><a href=""></a></li>
         </ul>
@@ -60,18 +63,21 @@
           Nikmati perjalanan rasa dari berbagai belahan dunia. FoodieSpell
           menyajikan resep global dan rekomendasi makanan khas internasional.
         </p>
-        <h2>Cari Resep Favoritmu :</h2>
+        <h2 id="search-recipe">Cari Resep Favoritmu :</h2>
         <form id="searchForm">
-          <input type="text" id="searchInput" placeholder="Cari resep..." />
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Masukan nama makanan..."
+          />
           <button type="submit" class="btn-search">Search</button>
         </form>
       </div>
     </section>
 
     <section class="recipe" id="resep">
-      <h2 class="title">Galeri Resep</h2>
       <h3 class="sub-title">Cari berbagai jenis resep :</h3>
-    
+
       <!-- Baris pertama -->
       <div class="gallery-wrapper">
         <button id="scrollLeft" class="scroll-btn">⟨</button>
@@ -80,7 +86,7 @@
         </div>
         <button id="scrollRight" class="scroll-btn">⟩</button>
       </div>
-    
+
       <!-- Baris kedua -->
       <div class="gallery-wrapper">
         <button id="scrollLeft2" class="scroll-btn">⟨</button>
@@ -89,7 +95,7 @@
         </div>
         <button id="scrollRight2" class="scroll-btn">⟩</button>
       </div>
-    
+
       <!-- Template  -->
       <template id="recipe-template">
         <div class="card">
