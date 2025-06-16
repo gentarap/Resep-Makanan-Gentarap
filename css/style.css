@@ -358,6 +358,22 @@ nav {
   gap: 20px;
 }
 
+.btn-kembali {
+  background-color: var(--accent-red);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.btn-kembali:hover {
+  background-color: var(--accent-red-light);
+}
+
 .info-gambar {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -439,6 +455,101 @@ nav {
 ul,
 ol {
   padding-left: 35px;
+}
+
+/* footer */
+
+.footer {
+  background-color: var(--primary-green-dark);
+  padding: 40px 20px;
+  color: var(--light-gray);
+  font-family: Arial, sans-serif;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-about {
+  flex: 1 1 300px;
+}
+
+.footer-about .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--accent-red-light);
+  text-decoration: none;
+}
+
+.footer-about p {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: var(--accent-red);
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.footer-links {
+  flex: 1 1 150px;
+}
+
+.footer-links h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: var(--accent-orange);
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: var(--light-gray);
+  transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: var(--light-gray);
+}
+
+.footer-contact {
+  flex: 1 1 250px;
+}
+
+.footer-contact h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: var(--accent-orange);
+}
+
+.footer-contact p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.footer .copyright {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--light-gray);
+}
+
+.sitename {
+  color: var(--accent-orange);
+  font-weight: bold;
 }
 
 /* ===== Responsive for Tablets (768px and below) ===== */
@@ -573,6 +684,24 @@ ol {
   .langkah {
     padding: 0.8rem;
   }
+
+  /* footer */
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-about,
+  .footer-links,
+  .footer-contact {
+    flex: 1 1 100%;
+    margin-bottom: 0;
+  }
+
+  .social-links a {
+    font-size: 18px;
+  }
 }
 
 /* ===== Responsive for Mobile (480px and below) ===== */
@@ -642,6 +771,12 @@ ol {
   #nav-links li a {
     padding: 8px;
     font-size: 0.95rem;
+  }
+
+  .btn-kembali {
+    font-size: 13px;
+    margin: 10px 20px;
+    padding: 6px 12px;
   }
 
   .gallery-wrapper {
@@ -715,5 +850,38 @@ ol {
   ul,
   ol {
     padding-left: 20px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 25px 10px;
+    text-align: left;
+  }
+
+  .footer-top {
+    gap: 15px;
+  }
+
+  .footer-about .logo {
+    font-size: 20px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 16px;
+  }
+
+  .footer-links li,
+  .footer-contact p {
+    font-size: 13px;
+  }
+
+  .social-links a {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+
+  .copyright {
+    font-size: 12px;
   }
 }
