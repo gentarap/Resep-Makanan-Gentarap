@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Resep</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- Navigation -->
+      <nav>
+        <div class="nav-header">
+          <a href="#" id="logo">FoodieSpell</a>
+          <button id="hamburger">&#9776;</button>
+        </div>
+        <ul id="nav-links">
+          <li><a href="../index.html">Beranda</a></li>
+          <li><a href="../index.html#search-recipe">Cari Resep</a></li>
+          <li><a href="#">Kelola Resep</a></li>
+          <!-- Tombol Kembali -->
+          <li><a href="../index.html" class="btn-kembali">Kembali</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="header">
+        <h1>Kelola Resep</h1>
+        <button class="btn" onclick="openModal()">+ Tambah Resep</button>
+      </div>
+      <div class="cards" id="recipeList">
+        <!-- Recipe cards will be populated here -->
+      </div>
+    </div>
+
+    <!-- Recipe Card Template -->
+    <template id="recipe-card-template">
+      <div class="card">
+        <img class="recipe-image" alt="" />
+        <div class="card-body">
+          <h3 class="recipe-name"></h3>
+          <div class="recipe-meta">
+            <span class="prep-cook-time">⏱️</span>
+            <span class="servings">👥</span>
+            <span class="difficulty">📊</span>
+          </div>
+          <div class="recipe-meta">
+            <span class="rating">⭐</span>
+            <span class="calories">🔥</span>
+            <span class="cuisine">🍽️</span>
+          </div>
+          <div class="tags"></div>
+          <div class="ingredients-preview">
+            <strong>Bahan:</strong> <span class="ingredients-text"></span>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="update">Edit</button>
+          <button class="delete">Hapus</button>
+        </div>
+      </div>
+    </template>
+
+    <!-- Tag Template -->
+    <template id="tag-template">
+      <span class="tag"></span>
+    </template>
+
+    <!-- Empty State Template -->
+    <template id="empty-state-template">
+      <p class="empty-state">Belum ada resep. Tambahkan resep pertama Anda!</p>
+    </template>
+
+    <!-- Loading State Template -->
+    <template id="loading-template">
+      <div class="loading">
+        <p>Memuat resep...</p>
+      </div>
+    </template>
+
+    <!-- Section Modal -->
+    <section>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <button class="close-modal" onclick="closeModal()">&times;</button>
+          <h3 id="modalTitle">Tambah Resep</h3>
+
+          <div class="form-group">
+            <label>Nama Resep:</label>
+            <input type="text" id="recipeNameInput" required />
+          </div>
+
+          <div class="form-group">
+            <label>Upload Gambar:</label>
+            <div
+              class="image-upload"
+              onclick="document.getElementById('imageFile').click()"
+            >
+              <input
+                type="file"
+                id="imageFile"
+                accept="image/*"
+                style="display: none"
+                onchange="handleImageUpload(event)"
+              />
+              <p>Klik untuk upload gambar atau seret gambar ke sini</p>
+              <img
+                id="imagePreview"
+                class="image-preview"
+                style="display: none"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Waktu Persiapan (menit):</label>
+              <input type="number" id="prepTimeInput" min="1" />
+            </div>
+            <div class="form-group">
+              <label>Waktu Memasak (menit):</label>
+              <input type="number" id="cookTimeInput" min="1" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Porsi:</label>
+              <input type="number" id="servingsInput" min="1" />
+            </div>
+            <div class="form-group">
+              <label>Tingkat Kesulitan:</label>
+              <select id="difficultyInput">
+                <option value="Easy">Mudah</option>
+                <option value="Medium">Sedang</option>
+                <option value="Hard">Sulit</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Jenis Masakan:</label>
+              <input
+                type="text"
+                id="cuisineInput"
+                placeholder="contoh: Italian, Indonesian"
+              />
+            </div>
+            <div class="form-group">
+              <label>Kalori per Porsi:</label>
+              <input type="number" id="caloriesInput" min="1" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Waktu Makan:</label>
+            <select id="mealTypeInput" multiple>
+              <option value="Breakfast">Sarapan</option>
+              <option value="Lunch">Makan Siang</option>
+              <option value="Dinner">Makan Malam</option>
+              <option value="Snack">Camilan</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Tags (pisahkan dengan koma):</label>
+            <input
+              type="text"
+              id="tagsInput"
+              placeholder="contoh: Pizza, Italian, Vegetarian"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Bahan-bahan (satu bahan per baris):</label>
+            <textarea
+              id="ingredientsInput"
+              placeholder="contoh:&#10;2 cups flour&#10;1 tsp salt&#10;3 eggs"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Instruksi Memasak (satu langkah per baris):</label>
+            <textarea
+              id="instructionsInput"
+              placeholder="contoh:&#10;Panaskan oven hingga 180°C&#10;Campurkan tepung dan garam&#10;Tambahkan telur satu per satu"
+            ></textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-secondary" onclick="closeModal()">
+              Batal
+            </button>
+            <button class="btn" onclick="saveRecipe()">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="footer">
+      <div class="footer-top">
+        <!-- Kolom 1: About -->
+        <div class="footer-about">
+          <a href="index.html" class="logo">
+            <span class="sitename">FoodieSpell</span>
+          </a>
+          <p>
+            FoodieSpell adalah teman setia dapur Anda — menghadirkan inspirasi
+            masak dari resep rumahan hingga kreasi kuliner modern. Temukan
+            beragam resep lezat, tips memasak praktis, dan cerita di balik
+            setiap hidangan. Jelajahi rasa, kreasikan cita, dan jadikan setiap
+            masakan punya cerita!
+          </p>
+          <div class="social-links">
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Kolom 2: Useful Links -->
+        <div class="footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Our Services -->
+        <div class="footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Cari Resep</a></li>
+            <li><a href="#">Kelola Resep</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 4: Kontak -->
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>
+            <strong>Alamat:</strong> Jl. Letjend Pol. Soemarto No.127, Watumas,
+            Purwanegara, Kec. Purwokerto Utara, Kabupaten Banyumas, Jawa Tengah
+            53127
+          </p>
+          <p><strong>Phone:</strong> +1 5589 55488 55</p>
+          <p><strong>Email:</strong> info@example.com</p>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="copyright">
+        <p>© <span class="sitename">FoodieSpell</span> All Rights Reserved</p>
+      </div>
+    </footer>
+    
+    <script src="/js/crud-resep.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

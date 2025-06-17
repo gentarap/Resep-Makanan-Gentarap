@@ -13,8 +13,8 @@ const template = document.getElementById("recipe-template");
 const scrollWrapper = document.querySelectorAll(".scroll-wrapper");
 
 function fillCard(clone, recipe) {
-  const img = clone.querySelector(".card-image");
-  const title = clone.querySelector(".card-title");
+  const img = clone.querySelector(".fs-card-image");
+  const title = clone.querySelector(".fs-card-title");
   const tags = clone.querySelector(".tags");
   const rating = clone.querySelector(".rating");
   const mealType = clone.querySelector(".meal-type");
